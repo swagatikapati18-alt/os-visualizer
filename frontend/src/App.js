@@ -50,33 +50,13 @@ function AppContent() {
             borderBottom: '1px solid var(--border)',
           }}
         >
-          <div className="flex items-center gap-2">
-            {['scheduling', 'memory', 'deadlock', 'disk'].map((mod) => (
-              <span
-                key={mod}
-                style={{ color: 'var(--text-muted)', fontSize: 12 }}
-              >
-                {mod === activeModule && (
-                  <span
-                    style={{
-                      color: 'var(--text-primary)',
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      fontWeight: 600,
-                      textTransform: 'capitalize',
-                    }}
-                  >
-                    {mod}
-                  </span>
-                )}
-              </span>
-            ))}
-
+          <div className="flex items-center gap-3">
             <span
               style={{
                 color: 'var(--text-primary)',
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 600,
-                fontSize: 13,
+                fontSize: 14,
                 textTransform: 'capitalize',
               }}
             >
@@ -100,7 +80,7 @@ function AppContent() {
   );
 }
 
-/* ✅ FINAL APP COMPONENT (ONLY ONE!) */
+/* ✅ ONLY ONE APP COMPONENT */
 export default function App() {
   return (
     <AppProvider>
