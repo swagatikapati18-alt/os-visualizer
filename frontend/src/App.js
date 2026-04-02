@@ -13,21 +13,35 @@ function AppContent() {
 
   const renderPage = () => {
     switch (activeModule) {
-      case 'scheduling': return <SchedulingPage />;
-      case 'memory': return <MemoryPage />;
-      case 'deadlock': return <DeadlockPage />;
-      case 'disk': return <DiskPage />;
-      case 'history': return <HistoryPage />;
-      default: return <SchedulingPage />;
+      case 'scheduling':
+        return <SchedulingPage />;
+      case 'memory':
+        return <MemoryPage />;
+      case 'deadlock':
+        return <DeadlockPage />;
+      case 'disk':
+        return <DiskPage />;
+      case 'history':
+        return <HistoryPage />;
+      default:
+        return <SchedulingPage />;
     }
   };
 
   return (
-    <div className="flex min-h-screen grid-bg" style={{ background: 'var(--bg-primary)' }}>
-      <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
+    <div
+      className="flex min-h-screen grid-bg"
+      style={{ background: 'var(--bg-primary)' }}
+    >
+      {/* Sidebar */}
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        setCollapsed={setSidebarCollapsed}
+      />
 
+      {/* Main Content */}
       <main className="flex-1 overflow-auto">
-        {/* Top bar */}
+        {/* Top Bar */}
         <div
           className="sticky top-0 z-10 flex items-center justify-between px-6 py-3"
           style={{
@@ -38,21 +52,34 @@ function AppContent() {
         >
           <div className="flex items-center gap-2">
             {['scheduling', 'memory', 'deadlock', 'disk'].map((mod) => (
-              <span key={mod} style={{ color: 'var(--text-muted)', fontSize: 12 }}>
+              <span
+                key={mod}
+                style={{ color: 'var(--text-muted)', fontSize: 12 }}
+              >
                 {mod === activeModule && (
-                  <span style={{ color: 'var(--text-primary)', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, textTransform: 'capitalize' }}>
+                  <span
+                    style={{
+                      color: 'var(--text-primary)',
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontWeight: 600,
+                      textTransform: 'capitalize',
+                    }}
+                  >
                     {mod}
                   </span>
                 )}
               </span>
             ))}
-            <span style={{
-              color: 'var(--text-primary)',
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 600,
-              fontSize: 13,
-              textTransform: 'capitalize',
-            }}>
+
+            <span
+              style={{
+                color: 'var(--text-primary)',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 600,
+                fontSize: 13,
+                textTransform: 'capitalize',
+              }}
+            >
               {activeModule}
             </span>
           </div>
@@ -66,15 +93,14 @@ function AppContent() {
           </button>
         </div>
 
-        {/* Page content */}
-        <div className="p-6">
-          {renderPage()}
-        </div>
+        {/* Page Content */}
+        <div className="p-6">{renderPage()}</div>
       </main>
     </div>
   );
 }
 
+/* ✅ FINAL APP COMPONENT (ONLY ONE!) */
 export default function App() {
   return (
     <AppProvider>
@@ -82,27 +108,3 @@ export default function App() {
     </AppProvider>
   );
 }
-
-
-import { useEffect } from "react";
-import { getSimulations } from "./api"; // adjust path if needed
-
-function App() {
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getSimulations();
-        console.log("API DATA:", data);
-      } catch (err) {
-        console.error("ERROR:", err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return <h1>OS Visualizer</h1>;
-}
-
-export default App;
