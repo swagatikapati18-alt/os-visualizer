@@ -79,12 +79,3 @@ function AppContent() {
     </div>
   );
 }
-
-/* ✅ ONLY ONE APP COMPONENT */
-export default function App() {
-  return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
-  );
-}
