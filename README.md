@@ -158,7 +158,7 @@ os-visualizer/
 
 ## 🔌 REST API
 
-Base URL: `http://localhost:5000/api`
+Base URL: `http:///api`
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|

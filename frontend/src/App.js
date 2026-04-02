@@ -82,3 +82,27 @@ export default function App() {
     </AppProvider>
   );
 }
+
+
+import { useEffect } from "react";
+import { getSimulations } from "./api"; // adjust path if needed
+
+function App() {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getSimulations();
+        console.log("API DATA:", data);
+      } catch (err) {
+        console.error("ERROR:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return <h1>OS Visualizer</h1>;
+}
+
+export default App;
